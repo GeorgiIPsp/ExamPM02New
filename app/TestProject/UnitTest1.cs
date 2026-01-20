@@ -1,6 +1,9 @@
 ﻿using static Program;
 namespace TestProject
 {
+    /// <summary>
+    /// Тест на проверку корретности работы исключений
+    /// </summary>
     public class UnitTest
     {
             [Fact]
