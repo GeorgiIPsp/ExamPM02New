@@ -4,7 +4,7 @@ using System.Threading.Channels;
 class Program
 {
     static int n;
-
+    // Добавление комментария для проерки работоспособности коммитов
     static void Main(string[] args)
     {
         Console.WriteLine("=== Карта города Кольчугино ===");
@@ -21,7 +21,7 @@ class Program
 
         double[,] speedMatrix = GenerateSpeeds();
 
-
+        // Вывод информации о скоростях
         PrintSpeedInfo(distanceMatrix, speedMatrix);
 
         ProcessQueries(distanceMatrix, speedMatrix);
@@ -33,7 +33,10 @@ class Program
 
 
 
-
+    /// <summary>
+    /// Метод загрузки файла
+    /// </summary>
+    /// <returns></returns>
     static double[,] LoadDistancesFromFile()
     {
         string fileName = "map.txt";
@@ -115,7 +118,10 @@ class Program
 
 
 
-
+    /// <summary>
+    /// Метод генерации рандомом скоростей
+    /// </summary>
+    /// <returns></returns>
     static double[,] GenerateSpeeds()
     {
         Random random = new Random();
@@ -134,7 +140,11 @@ class Program
 
         return speeds;
     }
-
+    /// <summary>
+    /// Вывод информации о скоростях
+    /// </summary>
+    /// <param name="distances"></param>
+    /// <param name="speeds"></param>
     static void PrintSpeedInfo(double[,] distances, double[,] speeds)
     {
         Console.WriteLine("\n=== Средние скорости на участках ===");
@@ -153,7 +163,12 @@ class Program
         }
         Console.WriteLine($"Всего путей: {count}");
     }
-
+    
+    /// <summary>
+    /// Основные операции с точками и маршрутами
+    /// </summary>
+    /// <param name="distanceMatrix"></param>
+    /// <param name="speedMatrix"></param>
     static void ProcessQueries(double[,] distanceMatrix, double[,] speedMatrix)
     {
         Console.WriteLine("\n========================================");
@@ -209,6 +224,12 @@ class Program
         }
     }
 
+    /// <summary>
+    /// Создание матрицы времени(определение времени прохждения на путях)
+    /// </summary>
+    /// <param name="distances"></param>
+    /// <param name="speeds"></param>
+    /// <returns></returns>
     static double[,] CreateTimeMatrix(double[,] distances, double[,] speeds)
     {
         double[,] times = new double[n, n];
@@ -236,6 +257,14 @@ class Program
         return times;
     }
 
+    /// <summary>
+    /// Поиск минимального времени прохождения пути и вывод данной инфрмации о путях и времени
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <param name="distanceMatrix"></param>
+    /// <param name="speedMatrix"></param>
+    /// <param name="timeMatrix"></param>
     static void FindAndPrintShortestTime(int start, int end, double[,] distanceMatrix,
                                         double[,] speedMatrix, double[,] timeMatrix)
     {
@@ -283,6 +312,15 @@ class Program
         }
     }
 
+
+    /// <summary>
+    /// Восстановление историйи путей
+    /// </summary>
+    /// <param name="timeMatrix"></param>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <param name="distances"></param>
+    /// <returns></returns>
     static List<int> ReconstructPath(double[,] timeMatrix, int start, int end, double[] distances)
     {
         List<int> path = new List<int>();
