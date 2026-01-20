@@ -1,7 +1,7 @@
 ﻿using app.Classes;
 using System.Threading.Channels;
 
-class Program
+public class Program
 {
     static int n;
     // Добавление комментария для проерки работоспособности коммитов
@@ -37,7 +37,7 @@ class Program
     /// Метод загрузки файла
     /// </summary>
     /// <returns></returns>
-    static double[,] LoadDistancesFromFile()
+    public static double[,] LoadDistancesFromFile()
     {
         string fileName = "map.txt";
 
